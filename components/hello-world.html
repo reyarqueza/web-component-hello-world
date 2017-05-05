@@ -1,0 +1,38 @@
+<!-- Defines element markup -->
+<template id="hello-world">
+    <div class="hello-world">
+        <h1>Hello world!</h1>
+    </div>
+
+    <style>
+        h1 {
+            color: #000;
+            font-family: "Trebuchet MS", sans-serif;
+        }
+    </style>
+</template>
+
+<script>
+// Create a class for the element
+class HelloWorld extends HTMLElement {
+  constructor() {
+    // Always call super first in constructor
+    super();
+
+    //The document that is importing this
+    var main = document.currentScript.ownerDocument;
+
+    // Create a shadow root
+    var shadow = this.attachShadow({mode: 'open'});
+
+    //Import the template
+    var clone = document.importNode(main.querySelector('#hello-world').content, true);
+
+    // Add the link to the shadow root.
+    shadow.appendChild(clone);
+  }
+}
+
+// Define the new element
+customElements.define('hello-world', HelloWorld);
+</script>
