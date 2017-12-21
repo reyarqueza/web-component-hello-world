@@ -1,0 +1,27 @@
+{
+  "name": "web-component-hello-world",
+  "version": "1.0.0",
+  "description": "Native HTML5 web component example.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reyarqueza/web-component-hello-world.git"
+  },
+  "keywords": [
+    "web",
+    "component"
+  ],
+  "author": "Ryan Lee, Rey Arqueza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reyarqueza/web-component-hello-world/issues"
+  },
+  "homepage": "https://github.com/reyarqueza/web-component-hello-world#readme",
+  "devDependencies": {
+    "http-server": "^0.10.0"
+  }
+}

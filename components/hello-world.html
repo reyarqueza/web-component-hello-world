@@ -2,37 +2,66 @@
 <template id="hello-world">
     <div class="hello-world">
         <h1>Hello world!</h1>
+        <p>
+            <slot></slot>
+        </p>
     </div>
-
     <style>
         h1 {
             color: #000;
             font-family: "Trebuchet MS", sans-serif;
         }
+
+        .hw-success h1 {
+            color: #0f0;
+        }
+
+        .hw-error h1 {
+            color: #f00;
+        }
     </style>
 </template>
 
 <script>
-// Create a class for the element
-class HelloWorld extends HTMLElement {
-  constructor() {
-    // Always call super first in constructor
-    super();
 
-    //The document that is importing this
-    var main = document.currentScript.ownerDocument;
+    // Create a class for the element
+    class HelloWorld extends HTMLElement {
+        constructor() {
+            // Always call super first in constructor
+            super();
+        }
 
-    // Create a shadow root
-    var shadow = this.attachShadow({mode: 'open'});
+        get theme() {
+            return this.getAttribute('theme');
+        }
 
-    //Import the template
-    var clone = document.importNode(main.querySelector('#hello-world').content, true);
+        // After hello-world is inserted into the dom, append the clone. 
+        connectedCallback() {
+            //The document that is importing this
+            const main = document.currentScript.ownerDocument;
 
-    // Add the link to the shadow root.
-    shadow.appendChild(clone);
-  }
-}
+            // Create a shadow root
+            const shadow = this.attachShadow({ mode: 'open' });
 
-// Define the new element
-customElements.define('hello-world', HelloWorld);
+            //Import the template
+            const clone = document.importNode(main.querySelector('#hello-world').content, true);
+
+            // Add the link to the shadow root.
+            shadow.appendChild(clone);
+
+            // add the theme class
+            switch (this.theme) {
+                case 'success':
+                    shadow.querySelector('.hello-world').classList.add('hw-success');
+                    break;
+                case 'error':
+                    shadow.querySelector('.hello-world').classList.add('hw-error');
+                    break;
+            }
+
+        }
+    }
+
+    // Define the new element
+    customElements.define('hello-world', HelloWorld);
 </script>
