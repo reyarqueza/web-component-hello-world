@@ -8,22 +8,22 @@ I am aware that the current best way to do web components with cross browser sup
 ## The building blocks
 This hello world example of native web components demonstrates the following:
 
-* ES6 new Class Syntax 
+### ES6 new Class Syntax 
  * constructor
  * super
  * getters
 
-* Custom Elements v1 
+### Custom Elements v1 
  * HTMLElement class
  * window.customElements.define
  * connectedCallback
  * template element tag
 
-* Shadow DOM v1
+### Shadow DOM v1
  * attachShadow
  * slot element tag
 
-* HTML Imports
+### HTML Imports
  * rel="import"
 
 ## Requirements
@@ -31,18 +31,20 @@ HTML using web components needs to be served through an http server. For conveni
 
 If you don't have npm and node installed, [get npm](https://www.npmjs.com/get-npm).
 
-Next, install the depedencies for web-component-hello-world:
+1) Install the depedencies for web-component-hello-world:
 
 ```
 npm install
 ```
 
-Next, run the local http-server:
+2) Run the local http-server:
+
 ```
 npm run dev
 ```
 
-Now open your browser to the url specified on the terminal. You may see something similiar to this:
+3) Now open your browser to the url specified on the terminal. You may see something similiar to this:
+
 ```
 Starting up http-server, serving ./
 Available on:
